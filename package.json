@@ -1,0 +1,39 @@
+{
+  "name": "@pdfless/pdfless-js",
+  "version": "1.0.0",
+  "description": "Pdfless-js is a javascript library",
+  "main": "dist/pdfless.js",
+  "module": "dist/pdfless.esm.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pdfless/pdfless-js.git"
+  },
+  "keywords": [
+    "pdf",
+    "pdfless",
+    "pdfless-js",
+    "library"
+  ],
+  "author": "Nicolas Law-dune",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pdfless/pdfless-js/issues"
+  },
+  "homepage": "https://github.com/Pdfless/pdfless-js#readme",
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.2",
+    "rollup": "^3.26.3",
+    "tslib": "^2.6.0",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "@microsoft/kiota-abstractions": "^1.0.0-preview.24",
+    "@microsoft/kiota-http-fetchlibrary": "^1.0.0-preview.23",
+    "@microsoft/kiota-serialization-form": "^1.0.0-preview.13",
+    "@microsoft/kiota-serialization-json": "^1.0.0-preview.22",
+    "@microsoft/kiota-serialization-text": "^1.0.0-preview.21"
+  }
+}

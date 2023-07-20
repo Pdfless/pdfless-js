@@ -1,0 +1,8 @@
+import {deserializeIntoApiExceptionDetailsResult} from './deserializeIntoApiExceptionDetailsResult';
+import {ApiExceptionDetailsResult} from './index';
+import {ParseNode} from '@microsoft/kiota-abstractions';
+
+export function createApiExceptionDetailsResultFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+    if(!parseNode) throw new Error("parseNode cannot be undefined");
+    return deserializeIntoApiExceptionDetailsResult;
+}

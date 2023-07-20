@@ -1,0 +1,260 @@
+openapi: 3.0.1
+info:
+  title: Pdfless API
+  version: v1
+paths:
+  '/v{version}/document-templates':
+    get:
+      tags:
+        - DocumentTemplates
+      summary: List document templates
+      description: List document templates of current workspace
+      parameters:
+        - name: Page
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: PageSize
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DocumentTemplateDto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DocumentTemplateDto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DocumentTemplateDto'
+        '500':
+          description: Server Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ApiExceptionDetailsResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiExceptionDetailsResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ApiExceptionDetailsResult'
+  '/v{version}/pdfs':
+    post:
+      tags:
+        - PDFs
+      summary: Create PDF
+      description: Generate document based on template ID and payload data
+      parameters:
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GeneratePDFCommand'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/GeneratePDFCommand'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/GeneratePDFCommand'
+      responses:
+        '201':
+          description: Created
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PDFDtoApiResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PDFDtoApiResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PDFDtoApiResult'
+        '500':
+          description: Server Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ApiExceptionDetailsResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiExceptionDetailsResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ApiExceptionDetailsResult'
+  '/v{version}/workspaces':
+    get:
+      tags:
+        - Workspaces
+      summary: Get workspace
+      description: Get workspace detail
+      parameters:
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/WorkspaceDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkspaceDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/WorkspaceDto'
+        '500':
+          description: Server Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ApiExceptionDetailsResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiExceptionDetailsResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ApiExceptionDetailsResult'
+components:
+  schemas:
+    ApiExceptionDetailsResult:
+      type: object
+      properties:
+        message:
+          type: string
+          nullable: true
+        error_code:
+          type: string
+          nullable: true
+        documentation_url:
+          type: string
+          nullable: true
+        correlation_id:
+          type: string
+          format: uuid
+      additionalProperties: false
+    DocumentTemplateDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Template identifier
+          format: uuid
+        name:
+          type: string
+          description: Template name
+          nullable: true
+        imagePreviewUrl:
+          type: string
+          description: Image preview of document template
+          nullable: true
+        pdfPreviewUrl:
+          type: string
+          description: PDF preview of document template
+          nullable: true
+        created:
+          type: string
+          description: Creation date
+          format: date-time
+        modified:
+          type: string
+          description: Modification date
+          format: date-time
+          nullable: true
+      additionalProperties: false
+    GeneratePDFCommand:
+      type: object
+      properties:
+        template_id:
+          type: string
+          format: uuid
+        payload:
+          nullable: true
+        reference_id:
+          type: string
+          nullable: true
+      additionalProperties: false
+    PDFDto:
+      type: object
+      properties:
+        reference_id:
+          type: string
+          description: Internal reference identifier
+          nullable: true
+        template_id:
+          type: string
+          description: Targeting template identifier
+          format: uuid
+        download_url:
+          type: string
+          description: URL of generated document
+          nullable: true
+        expires:
+          type: string
+          description: Expiration date
+          format: date-time
+        created_at:
+          type: string
+          description: Creation date
+          format: date-time
+      additionalProperties: false
+    PDFDtoApiResult:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/PDFDto'
+        status:
+          type: string
+          nullable: true
+      additionalProperties: false
+    WorkspaceDto:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of workspace
+          nullable: true
+        active:
+          type: boolean
+          description: Active status of workspace
+        created:
+          type: string
+          description: Creation date
+          format: date-time
+        modified:
+          type: string
+          description: Modification date
+          format: date-time
+          nullable: true
+      additionalProperties: false
+  securitySchemes:
+    APIKey:
+      type: apiKey
+      name: apikey
+      in: header

@@ -1,0 +1,29 @@
+{
+  "descriptionHash": "D801B82D84F2FE133651829CF34FE481422CBC87E3FCA926C8A12E3F4A4718F8193302406C06F4E72CFCD0D8A92C8D0AD4FAC795A9C5985DF98C37F6B61CDF77",
+  "descriptionLocation": "/Users/nicolas/Projects/Synapsium/pdfless-sdk/pdfless-js/swagger.yml",
+  "lockFileVersion": "1.0.0",
+  "kiotaVersion": "1.4.0",
+  "clientClassName": "PdflessClient",
+  "clientNamespaceName": "ApiSdk",
+  "language": "TypeScript",
+  "usesBackingStore": false,
+  "includeAdditionalData": true,
+  "serializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Form.FormSerializationWriterFactory"
+  ],
+  "deserializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Text.TextParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Form.FormParseNodeFactory"
+  ],
+  "structuredMimeTypes": [
+    "application/json",
+    "text/plain",
+    "application/x-www-form-urlencoded"
+  ],
+  "includePatterns": [],
+  "excludePatterns": [],
+  "disabledValidationRules": []
+}
