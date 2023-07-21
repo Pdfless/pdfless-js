@@ -2,10 +2,12 @@
   "name": "@pdfless/pdfless-js",
   "version": "1.0.0",
   "description": "Pdfless-js is a javascript library",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
+  "main": "dist/@pdfless/pdfless-js/index.js",
+  "module": "dist/@pdfless/pdfless-js/index.esm.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "npx rollup -c --bundleConfigAsCjs",
+    "publish": "cd ./dist/@synapsium/ngx-enumr && npm publish --access public"
   },
   "repository": {
     "type": "git",
