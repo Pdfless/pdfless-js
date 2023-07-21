@@ -18,5 +18,5 @@ steps:
     inputs:
       command: publish
       publishRegistry: useExternalRegistry
-      workingDir: dist
+      workingDir: dist/@pdfless/pdfless-js
       publishEndpoint: 'NPMJS'
