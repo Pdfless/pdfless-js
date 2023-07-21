@@ -6,8 +6,7 @@
   "module": "dist/@pdfless/pdfless-js/index.esm.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "npx rollup -c --bundleConfigAsCjs",
-    "publish": "cd ./dist/@synapsium/ngx-enumr && npm publish --access public"
+    "package": "npx rollup -c --bundleConfigAsCjs cp package.json dist/@pdfless/pdfless-js"
   },
   "repository": {
     "type": "git",
