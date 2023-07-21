@@ -195,7 +195,8 @@ components:
           type: string
           format: uuid
         payload:
-          nullable: true
+          type: string
+          nullable: false
         reference_id:
           type: string
           nullable: true

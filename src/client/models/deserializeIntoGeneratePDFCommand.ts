@@ -3,6 +3,7 @@ import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstrac
 
 export function deserializeIntoGeneratePDFCommand(generatePDFCommand: GeneratePDFCommand | undefined = {} as GeneratePDFCommand) : Record<string, (node: ParseNode) => void> {
     return {
+        "payload": n => { generatePDFCommand.payload = n.getStringValue(); },
         "reference_id": n => { generatePDFCommand.reference_id = n.getStringValue(); },
         "template_id": n => { generatePDFCommand.template_id = n.getStringValue(); },
     }

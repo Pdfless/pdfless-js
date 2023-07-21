@@ -6,14 +6,14 @@ import { GeneratePDFCommand, PDFDtoApiResult, WorkspaceDto } from "./client/mode
 const PDFLESS_BASE_URL = 'https://api.pdfless.com';
 
 export class PdflessService {
-    private version: string = "v1";
-    private client: any;
+    private version: string = "1";
+    private client: PdflessClient | undefined;
 
-    public constructor(apiKey: string, version: string = "v1") {
+    public constructor(apiKey: string, version: string = "1") {
         this.init(apiKey, version);
     };
 
-    public init(apiKey: string, version: string = "v1") {
+    public init(apiKey: string, version: string = "1") {
         const authProvider = new ApiKeyAuthenticationProvider(apiKey, "apikey", ApiKeyLocation.Header);
         const adapter = new FetchRequestAdapter(authProvider);
         adapter.baseUrl = PDFLESS_BASE_URL;
@@ -29,7 +29,6 @@ export class PdflessService {
         return await this.client.withVersion(this.version)
             .workspaces.get();
     }
-
     public async generatePDF(command: GeneratePDFCommand): Promise<PDFDtoApiResult | undefined>{
         if (!this.client) {
             throw new TypeError('API key is not defined');
@@ -42,7 +41,6 @@ export class PdflessService {
         return await this.client.withVersion(this.version)
             .pdfs.post(command);
     }
-
     public async listDocumentTemplates(page: number = 1, pageSize: number = 25) {
         if (!this.client) {
             throw new TypeError('API key is not defined');
