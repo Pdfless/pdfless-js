@@ -2,6 +2,7 @@ trigger: none
 
 variables:
 - group: version
+- group: npmjs
 
 steps:
   - task: NodeTool@0
