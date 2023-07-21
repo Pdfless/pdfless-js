@@ -16,7 +16,8 @@ steps:
   - task: Npm@1
     displayName: 'Publish on NPM'
     inputs:
-      command: publish
+      command: custom
+      customCommand: publish --access public
       publishRegistry: useExternalRegistry
       workingDir: dist/@pdfless/pdfless-js
       publishEndpoint: 'NPMJS'
