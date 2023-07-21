@@ -13,6 +13,10 @@ steps:
       npm install
       npm run package
     displayName: "Install dependencies and Package app"
+  - bash: |
+      echo '//registry.npmjs.org/:_authToken=$(auth-token)' > .npmrc
+    workingDirectory: dist/@pdfless/pdfless-js
+    displayName: 'Bash Script'
   - task: Npm@1
     displayName: 'Publish on NPM'
     inputs:
