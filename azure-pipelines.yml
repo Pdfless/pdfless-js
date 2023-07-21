@@ -8,9 +8,6 @@ steps:
     displayName: "Install NodeJS 16.x"
     inputs:
       versionSpec: "16.x"
-  - task: npmAuthenticate@0
-    inputs:
-      workingFile: "$(Build.Repository.LocalPath)/src/.npmrc"
   - script: |
       npm version $(major).$(minor).$(Build.BuildId)
       npm install
