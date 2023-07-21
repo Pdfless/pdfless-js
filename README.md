@@ -30,6 +30,7 @@ Use `generate(command)` function to generate PDF with a `GeneratePDFCommand` com
 |`template_id`|Yes|string|Select a document template of workspace.|
 |`payload`|Yes|string|If your document contains variables, enter data in JSON format corresponding to defined variables. You can read more about this [here](https://docs.pdfless.com/expressions).|
 
+
 ```javascript
 import { PdfService } from '@pdfless/pdfless-js';
 
@@ -88,13 +89,15 @@ main();
 
 Import TemplateService as a default import and instantiate it as `new TemplateService(apiKey)` with your workspace API key.
 
-```javascript
-import { TemplateService } from '@pdfless/pdfless-js';
-
 |Property|Required|Type|Description|Default
 |---|---|---|---|---|
 |`page`|Yes|number|Page number.|`1`|
 |`pageSize`|Yes|number|Number of item by page.|`25`|
+
+
+```javascript
+import { TemplateService } from '@pdfless/pdfless-js';
+
 
 async function main(): Promise<void> {
   try {
